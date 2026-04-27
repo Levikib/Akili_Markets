@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --void:    #000008;
+  --surface: #0a0a14;
+  --panel:   #0f0f1e;
+  --border:  #1a1a2e;
+  --cyan:    #00d4ff;
+  --violet:  #8b5cf6;
+  --emerald: #00ff88;
+  --amber:   #f59e0b;
+  --rose:    #ff3366;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--void);
+  color: #e2e8f0;
+  font-family: 'Inter', system-ui, sans-serif;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: var(--surface); }
+::-webkit-scrollbar-thumb { background: #1a1a2e; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: #00d4ff33; }
+
+@layer utilities {
+  .text-glow-cyan    { text-shadow: 0 0 10px #00d4ff, 0 0 30px #00d4ff60; }
+  .text-glow-violet  { text-shadow: 0 0 10px #8b5cf6, 0 0 30px #8b5cf660; }
+  .text-glow-emerald { text-shadow: 0 0 10px #00ff88, 0 0 30px #00ff8860; }
+  .text-glow-rose    { text-shadow: 0 0 10px #ff3366, 0 0 30px #ff336660; }
+
+  .border-glow-cyan    { border-color: #00d4ff; box-shadow: 0 0 10px #00d4ff40, inset 0 0 10px #00d4ff10; }
+  .border-glow-emerald { border-color: #00ff88; box-shadow: 0 0 10px #00ff8840, inset 0 0 10px #00ff8810; }
+  .border-glow-rose    { border-color: #ff3366; box-shadow: 0 0 10px #ff336640, inset 0 0 10px #ff336610; }
+  .border-glow-violet  { border-color: #8b5cf6; box-shadow: 0 0 10px #8b5cf640, inset 0 0 10px #8b5cf610; }
+
+  .bg-grid {
+    background-image: linear-gradient(#1a1a2e 1px, transparent 1px),
+                      linear-gradient(90deg, #1a1a2e 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .cyber-panel {
+    background: #0f0f1e;
+    border: 1px solid #1a1a2e;
+    box-shadow: 0 4px 24px #00000080;
+  }
+
+  .cyber-panel-cyan {
+    background: linear-gradient(135deg, #0f0f1e 0%, #000d14 100%);
+    border: 1px solid #00d4ff30;
+    box-shadow: 0 0 20px #00d4ff20, inset 0 0 20px #00d4ff08;
+  }
+
+  .clip-corner {
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
+  }
+
+  .clip-corner-sm {
+    clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);
+  }
+}
+
+@keyframes boot-flicker {
+  0%   { opacity: 0; }
+  10%  { opacity: 0.8; }
+  11%  { opacity: 0; }
+  20%  { opacity: 0.9; }
+  21%  { opacity: 0; }
+  30%  { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+.boot-in { animation: boot-flicker 0.6s ease-out forwards; }
